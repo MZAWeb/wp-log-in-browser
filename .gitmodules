@@ -1,3 +1,6 @@
 [submodule "interfaces/firephp"]
 	path = interfaces/firephp
 	url = https://github.com/firephp/firephp-core.git
+[submodule "interfaces/chromephp"]
+	path = interfaces/chromephp
+	url = https://github.com/ccampbell/chromephp.git
