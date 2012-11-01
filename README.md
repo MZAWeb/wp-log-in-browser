@@ -1,0 +1,2 @@
+wp-debug-in-browser
+===================
