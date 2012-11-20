@@ -25,3 +25,5 @@ For example, to log all your main query's query_vars:
             return $query;
         }
     }
+
+I *only* tested this in a vanilla installation of WordPress using TwentyTwelve. I'll test how this plays along with popular themes/plugins, but please be aware I didn't do it yet. Use it under your own risk.
