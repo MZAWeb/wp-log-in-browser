@@ -2,7 +2,7 @@
 class WPChromePHP implements iBrowser {
 
 	public function __construct() {
-		include 'api/chromephp/ChromePHP.php';
+		include 'api/chromephp/ChromePhp.php';
 		$this->api = ChromePhp::getInstance();
 	}
 
