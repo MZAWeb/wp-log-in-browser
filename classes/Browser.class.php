@@ -41,11 +41,13 @@ class Browser implements iBrowser {
 	/************* API **************/
 
 	public function init() {
-		ob_start();
+		if ( !ob_get_level() )
+			ob_start();
 	}
 
 	public function shutdown() {
-		ob_end_flush();
+		if ( ob_get_level() )
+			ob_end_flush();
 	}
 
 	private function _run( $command, $params = array() ) {
