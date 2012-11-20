@@ -1,4 +1,4 @@
-wp-debug-in-browser
+wp-log-in-browser
 ===================
 
 Allows you to log data from your PHP WordPress code to your browser's console.
