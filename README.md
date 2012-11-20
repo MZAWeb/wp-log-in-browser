@@ -17,7 +17,7 @@ To log things manually, you can use:
 
 For example, to log all your main query's query_vars:
 
-    add_filter( 'pre_get_posts', 'dlog_wp_queryani', 10000 );
+    add_filter( 'pre_get_posts', 'log_wp_query', 10000 );
 
     function log_wp_query( $query ) {
         if ($query->is_main_query()){
