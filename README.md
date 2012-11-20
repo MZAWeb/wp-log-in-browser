@@ -6,7 +6,7 @@ Allows you to log data from your PHP WordPress code to your browser's console.
 For Chrome you need to install [ChromePHP](http://www.chromephp.com/).
 For Firefox you need to install [FireBug](http://getfirebug.com/) and [FirePHP](http://www.firephp.org/).
 
-I'm working in a nice admin screen to config auto-logging of some common things (like wp_query in pre_get_posts and wp), and some other goodies.
+I'm working on a nice admin screen to config auto-logging of some common things (like wp_query in pre_get_posts and wp), and some other goodies.
 
 To log things manually, you can use:
 
