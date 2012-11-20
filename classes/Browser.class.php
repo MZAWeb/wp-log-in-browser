@@ -66,7 +66,7 @@ class Browser implements iBrowser {
 		// This will come from the admin config
 		$selected_interfaces = array( 'FirePHP', 'ChromePHP' );
 
-		$selected_interfaces = apply_filters( 'wpdib-selected-interfaces', $selected_interfaces );
+		$selected_interfaces = apply_filters( 'wplinb-selected-interfaces', $selected_interfaces );
 
 		foreach ( (array)$selected_interfaces as $interface_name ) {
 			$interface = $this->_get_interface( $interface_name );
@@ -91,7 +91,7 @@ class Browser implements iBrowser {
 				break;
 
 			default:
-				$interface = apply_filters( 'wpdib-get-interface', null, $interface_name );
+				$interface = apply_filters( 'wplinb-get-interface', null, $interface_name );
 
 				if ( $interface && !in_array( 'iBrowser', class_implements( $interface ) ) )
 					$interface = null;
