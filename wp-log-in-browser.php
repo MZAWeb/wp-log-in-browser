@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP Debug in Browser
+Plugin Name: WP Log in Browser
 Description: Allows you to send debug info to your browser console.
 Version: 0.1
 Author: Daniel Dvorkin
