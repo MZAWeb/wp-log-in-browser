@@ -36,3 +36,6 @@ Installation
 2. Make sure you init and update the submodules
 3. Activate in your WordPress admin as any other plugin
 
+
+![Chrome](http://screenshots.mzaweb.com/hFXw)
+![Firefox](http://screenshots.mzaweb.com/hFY6)
