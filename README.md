@@ -30,10 +30,10 @@ I *only* tested this in a vanilla installation of WordPress using TwentyTwelve. 
 
 
 Installation
-============
+------------
 
 1. Clone this repository in your wp-content/plugins folder
-2. Make sure you *init and update the submodules*
+2. Make sure you **init and update the submodules**
 3. Activate in your WordPress admin as any other plugin
 
 Screenshots
