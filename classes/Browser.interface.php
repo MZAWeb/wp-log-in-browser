@@ -1,7 +1,11 @@
 <?php
 interface iBrowser {
-	public function log( $var );
-	public function info( $var );
-	public function warn( $var );
-	public function error( $var );
+
+	public function log( $var, $label = null );
+
+	public function info( $var, $label = null );
+
+	public function warn( $var, $label = null );
+
+	public function error( $var, $label = null );
 }

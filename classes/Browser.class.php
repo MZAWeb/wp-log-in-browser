@@ -3,7 +3,7 @@
 if ( class_exists( "Browser" ) )
 	return;
 
-class Browser {
+class Browser implements iBrowser {
 
 	private static $instance;
 	private $interfaces = array();
@@ -12,6 +12,54 @@ class Browser {
 	public function __construct() {
 		$this->path = trailingslashit( dirname( dirname( __FILE__ ) ) );
 		$this->_get_interfaces();
+		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'shutdown', array( $this, 'shutdown' ) );
+	}
+
+	/************* API **************/
+
+	public function log( $var, $label = null ) {
+		$this->_run( 'log', array( $var, $label ) );
+		return $this;
+	}
+
+	public function info( $var, $label = null ) {
+		$this->_run( 'info', array( $var, $label ) );
+		return $this;
+	}
+
+	public function warn( $var, $label = null ) {
+		$this->_run( 'warn', array( $var, $label ) );
+		return $this;
+	}
+
+	public function error( $var, $label = null ) {
+		$this->_run( 'error', array( $var, $label ) );
+		return $this;
+	}
+
+	/************* API **************/
+
+	public function init() {
+		ob_start();
+	}
+
+	public function shutdown() {
+		ob_end_flush();
+	}
+
+	private function _run( $command, $params = array() ) {
+		if ( empty( $this->interfaces ) )
+			return;
+
+
+		foreach ( $this->interfaces as $interface ) {
+			try {
+				call_user_func_array( array( $interface, $command ), $params );
+			} catch ( Exception $e ) {
+
+			}
+		}
 	}
 
 	private function _get_interfaces() {

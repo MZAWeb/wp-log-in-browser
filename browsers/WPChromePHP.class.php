@@ -1,16 +1,25 @@
 <?php
 class WPChromePHP implements iBrowser {
 
-
-	public function log( $var ) {
+	public function __construct() {
+		include 'api/chromephp/ChromePHP.php';
+		$this->api = ChromePhp::getInstance();
 	}
 
-	public function info( $var ) {
+
+	public function log( $var, $label = null ) {
+		$this->api->log( $label, $var );
 	}
 
-	public function warn( $var ) {
+	public function info( $var, $label = null ) {
+		$this->api->info( $label, $var );
 	}
 
-	public function error( $var ) {
+	public function warn( $var, $label = null ) {
+		$this->api->warn( $label, $var );
+	}
+
+	public function error( $var, $label = null ) {
+		$this->api->error( $label, $var );
 	}
 }
