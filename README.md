@@ -3,7 +3,7 @@ wp-log-in-browser
 
 Allows you to log data from your PHP WordPress code to your browser's console.
 
-Annoyed you can't var_dump from an JSON AJAX handler? Not anymore!
+(a.k.a Annoyed you can't var_dump from an AJAX handler? Not anymore!)
 
 For Chrome you need to install [ChromePHP](http://www.chromephp.com/).
 For Firefox you need to install [FireBug](http://getfirebug.com/) and [FirePHP](http://www.firephp.org/).
