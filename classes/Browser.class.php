@@ -10,10 +10,14 @@ class Browser implements iBrowser {
 	private $path;
 
 	public function __construct() {
+
 		$this->path = trailingslashit( dirname( dirname( __FILE__ ) ) );
+
 		$this->_get_interfaces();
+
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'shutdown', array( $this, 'shutdown' ) );
+
 	}
 
 	/************* API **************/
@@ -50,10 +54,31 @@ class Browser implements iBrowser {
 			ob_end_flush();
 	}
 
+	private function _should_run() {
+
+		$enabled        = apply_filters( 'wplinb-enabled', true );
+		$match_wp_debug = apply_filters( 'wplinb-match-wp-debug', false );
+
+		if ( !$enabled )
+			return false;
+
+		if ( !$match_wp_debug )
+			return true;
+
+		if ( WP_DEBUG )
+			return true;
+
+		return false;
+
+	}
+
 	private function _run( $command, $params = array() ) {
-		if ( empty( $this->interfaces ) )
+
+		if ( !$this->_should_run() )
 			return;
 
+		if ( empty( $this->interfaces ) )
+			return;
 
 		foreach ( $this->interfaces as $interface ) {
 			try {

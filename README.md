@@ -38,6 +38,18 @@ Installation
 2. Make sure you **init and update the submodules**
 3. Activate in your WordPress admin as any other plugin
 
+Filters
+-----------
+
+**wplinb-match-wp-debug**: Set to true to only log when wp_debug is true. To prevent logging when wp_debug is false:
+
+    add_filter( 'wplinb-match-wp-debug', '__return_true' );
+
+**wplinb-enabled**: To disable logging completely. It takes precedence over *wplinb-match-wp-debug*. To disable logging:
+
+    add_filter( 'wplinb-enabled', '__return_false' );
+
+
 Screenshots
 -----------
 
@@ -49,3 +61,15 @@ In Firefox:
 
 Log even from and AJAX handler!
 ![AJAX](http://screenshots.mzaweb.com/hGnY)
+
+
+Changelog:
+
+0.1.1
+* Fix case on include for ChromePhp (props faction23)
+* Make the logger work from and AJAX handler
+* Add filter *wplinb-match-wp-debug* to log only when wp_debug is on
+* Add filter *wplinb-enabled* to disable logging completely. It has precedence over *wplinb-match-wp-debug*
+
+0.1
+* First release
