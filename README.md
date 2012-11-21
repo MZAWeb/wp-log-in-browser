@@ -5,8 +5,8 @@ Allows you to log data from your PHP WordPress code to your browser's console.
 
 (a.k.a Annoyed you can't var_dump from an AJAX handler? Not anymore!)
 
-For Chrome you need to install [ChromePHP](http://www.chromephp.com/).
-For Firefox you need to install [FireBug](http://getfirebug.com/) and [FirePHP](http://www.firephp.org/).
+For Chrome you need to install the [ChromePHP](http://www.chromephp.com/) extension.
+For Firefox you need to install both the [FireBug](http://getfirebug.com/) and [FirePHP](http://www.firephp.org/) extensions.
 
 I'm working on a nice admin screen to config auto-logging of some common things (like wp_query in pre_get_posts and wp), and some other goodies.
 
@@ -29,7 +29,6 @@ For example, to log all your main query's query_vars:
     }
 
 I *only* tested this in a vanilla installation of WordPress using TwentyTwelve. I'll test how this plays along with popular themes/plugins, but please be aware I didn't do it yet. Use it under your own risk.
-
 
 Installation
 ------------
