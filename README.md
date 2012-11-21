@@ -66,7 +66,7 @@ Changelog:
 
 0.1.1
 * Fix case on include for ChromePhp (props faction23)
-* Make the logger work from and AJAX handler
+* Make the logger work from an AJAX handler
 * Add filter *wplinb-match-wp-debug* to log only when wp_debug is on
 * Add filter *wplinb-enabled* to disable logging completely. It has precedence over *wplinb-match-wp-debug*
 
