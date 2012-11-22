@@ -40,16 +40,17 @@ The plugin includes a really simple function to allow you to track execution tim
     browser()->timer( $key, $log = false );
 
 The first time you call this function with a given $key (string) it will start a timer, and return false. You can start as many timers as you want, using different $key values. You can ignore the second parameter for this first call.
+
 The second time you call this function with a given $key, it will return the ellapsed time in seconds since you started the this $key timer. If you set the second parameter to true, it will also log this value to the browser.
 
-Example 1: Sequential use
+Example 1: Sequential use, log manually.
 
     browser()->timer( 'Mega loop' );
     for ( $i = 0; $i < 10000000; $i++ ) {}
     $time = browser()->timer( 'Mega loop' );
     browser()->log( $time, 'The mega loop took:' );
 
-Example 2: Start and end in different places
+Example 2: Start and end in different places, log automatically.
 
     add_action( 'posts_selection', 'start_timer', 100 );
     add_filter( 'the_posts', 'end_timer', 1, 2 );
