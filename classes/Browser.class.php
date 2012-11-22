@@ -22,21 +22,47 @@ class Browser implements iBrowser {
 
 	/************* API **************/
 
+	/**
+	 *
+	 * @param mixed  $var
+	 * @param string $label
+	 *
+	 * @return Browser
+	 */
 	public function log( $var, $label = null ) {
 		$this->_run( 'log', array( $var, $label ) );
 		return $this;
 	}
 
+	/**
+	 *
+	 * @param mixed  $var
+	 * @param string $label
+	 *
+	 * @return Browser
+	 */
 	public function info( $var, $label = null ) {
 		$this->_run( 'info', array( $var, $label ) );
 		return $this;
 	}
 
+	/**
+	 * @param mixed  $var
+	 * @param string $label
+	 *
+	 * @return Browser
+	 */
 	public function warn( $var, $label = null ) {
 		$this->_run( 'warn', array( $var, $label ) );
 		return $this;
 	}
 
+	/**
+	 * @param mixed  $var
+	 * @param string $label
+	 *
+	 * @return Browser
+	 */
 	public function error( $var, $label = null ) {
 		$this->_run( 'error', array( $var, $label ) );
 		return $this;
@@ -45,8 +71,7 @@ class Browser implements iBrowser {
 	/************* API **************/
 
 	public function init() {
-		if ( !ob_get_level() )
-			ob_start();
+		ob_start();
 	}
 
 	public function shutdown() {
@@ -54,6 +79,9 @@ class Browser implements iBrowser {
 			ob_end_flush();
 	}
 
+	/**
+	 * @return bool
+	 */
 	private function _should_run() {
 
 		$enabled        = apply_filters( 'wplinb-enabled', true );
@@ -72,6 +100,10 @@ class Browser implements iBrowser {
 
 	}
 
+	/**
+	 * @param  string $command
+	 * @param array   $params
+	 */
 	private function _run( $command, $params = array() ) {
 
 		if ( !$this->_should_run() )
@@ -89,6 +121,9 @@ class Browser implements iBrowser {
 		}
 	}
 
+	/**
+	 *
+	 */
 	private function _get_interfaces() {
 		// This will come from the admin config
 		$selected_interfaces = array( 'FirePHP', 'ChromePHP' );
@@ -103,6 +138,11 @@ class Browser implements iBrowser {
 		}
 	}
 
+	/**
+	 * @param $interface_name
+	 *
+	 * @return mixed|null|WPChromePHP|WPFirePHP
+	 */
 	private function _get_interface( $interface_name ) {
 
 		switch ( $interface_name ) {
@@ -145,6 +185,11 @@ class Browser implements iBrowser {
 }
 
 if ( !function_exists( 'browser' ) ) {
+	/**
+	 * Returns a browser instance.
+	 *
+	 * @return Browser
+	 */
 	function browser() {
 		return Browser::instance();
 	}

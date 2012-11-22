@@ -17,6 +17,10 @@ To log things manually, you can use:
     browser()->info( $var, $label );
     browser()->error( $var, $label );
 
+Also, commandas are chainable:
+
+    browser()->log( 'This is a log...' )->error( '...and this is an error' );
+
 For example, to log all your main query's query_vars:
 
     add_filter( 'pre_get_posts', 'log_wp_query', 10000 );
