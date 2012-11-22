@@ -32,7 +32,38 @@ For example, to log all your main query's query_vars:
         return $query;
     }
 
-I *only* tested this in a vanilla installation of WordPress using TwentyTwelve. I'll test how this plays along with popular themes/plugins, but please be aware I didn't do it yet. Use it under your own risk.
+Profiling
+---------
+
+The plugin includes a really simple function to allow you to track execution time of different parts of your code.
+
+    browser()->timer( $key, $log = false );
+
+The first time you call this function with a given $key (string) it will start a timer, and return false. You can start as many timers as you want, using different $key values. You can ignore the second parameter for this first call.
+The second time you call this function with a given $key, it will return the ellapsed time in seconds since you started the this $key timer. If you set the second parameter to true, it will also log this value to the browser.
+
+Example 1: Sequential use
+
+    browser()->timer( 'Mega loop' );
+    for ( $i = 0; $i < 10000000; $i++ ) {}
+    $time = browser()->timer( 'Mega loop' );
+    browser()->log( $time, 'The mega loop took:' );
+
+Example 2: Start and end in different places
+
+    add_action( 'posts_selection', 'start_timer', 100 );
+    add_filter( 'the_posts', 'end_timer', 1, 2 );
+
+    function start_timer( $query ) {
+        browser()->timer( 'Main query time' );
+    }
+
+    function end_timer( $posts, $query ) {
+        browser()->timer( 'Main query time', true );
+        return $posts;
+    }
+
+*This is not a good way of measuring how much time a query takes to run, it's just to illustrate how to use the timer.*
 
 Installation
 ------------
@@ -67,6 +98,10 @@ Log even from and AJAX handler!
 
 
 Changelog:
+
+0.1.2
+* Fix output buffering. It was failing in some scenarios.
+* Added timer function to easily profile execution time.
 
 0.1.1
 * Fix case on include for ChromePhp (props faction23)

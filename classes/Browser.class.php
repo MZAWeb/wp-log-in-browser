@@ -8,6 +8,7 @@ class Browser implements iBrowser {
 	private static $instance;
 	private $interfaces = array();
 	private $path;
+	private static $timers = array();
 
 	public function __construct() {
 
@@ -66,6 +67,37 @@ class Browser implements iBrowser {
 	public function error( $var, $label = null ) {
 		$this->_run( 'error', array( $var, $label ) );
 		return $this;
+	}
+
+	/**
+	 * @static
+	 *
+	 * @param string    $key
+	 * @param bool      $log
+	 *
+	 * @return bool|float
+	 *
+	 */
+	public function timer( $key, $log = false ) {
+		if ( !isset( self::$timers[$key] ) ) {
+			$time               = microtime();
+			$time               = explode( ' ', $time );
+			$time               = $time[1] + $time[0];
+			self::$timers[$key] = $time;
+			return false;
+
+		} else {
+			$time       = microtime();
+			$time       = explode( ' ', $time );
+			$time       = $time[1] + $time[0];
+			$finish     = $time;
+			$total_time = round( ( $finish - self::$timers[$key] ), 4 );
+
+			if ( $log )
+				$this->log( $total_time, $key );
+
+			return $total_time;
+		}
 	}
 
 	/************* API **************/

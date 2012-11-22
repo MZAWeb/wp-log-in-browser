@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Log in Browser
 Description: Allows you to send debug info to your browser console.
-Version: 0.1
+Version: 0.1.2
 Author: Daniel Dvorkin
 Author URI: http://danieldvork.in
 License: GPLv2 or later
