@@ -38,7 +38,7 @@ The plugin includes a really simple function to allow you to track execution tim
 
 The first time you call this function with a given $key (string) it will start a timer, and return false. You can start as many timers as you want, using different $key values. You can ignore the second parameter for this first call.
 
-The second time you call this function with a given $key, it will return the ellapsed time in seconds since you started the this $key timer. If you set the second parameter to true, it will also log this value to the browser.
+The second time you call this function with a given $key, it will return the ellapsed time in seconds since you started this $key timer. If you set the second parameter to true, it will also log this value to the browser.
 
 Example 1: Sequential use, log manually.
 
