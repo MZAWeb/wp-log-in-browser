@@ -43,7 +43,9 @@ The second time you call this function with a given $key, it will return the ell
 Example 1: Sequential use, log manually.
 
     browser()->timer( 'Mega loop' );
-    for ( $i = 0; $i < 10000000; $i++ ) {}
+    for ( $i = 0; $i < 1000000; $i++ ) {
+        //do something
+    }
     $time = browser()->timer( 'Mega loop' );
     browser()->log( $time, 'The mega loop took:' );
 
