@@ -65,6 +65,34 @@ Example 2: Start and end in different places, log automatically.
 
 *This is not a good way of measuring how much time a query takes to run, it's just to illustrate how to use the timer.*
 
+In exactly the same way, you can use the function
+
+	Browser()->memory( $key, $log = false );
+
+to measure delta of memory consumption from your first call and your second call with the same $key.
+
+Example:
+
+	Browser()->memory( 'testing' );
+	$test = array();
+	for ( $i = 0; $i < 100; $i++ ) {
+		$test[$i] = md5( rand( 1, $i ) );
+	}
+	Browser()->memory( 'testing', true );
+
+
+	Browser()->memory( 'testing' );
+	$test = array();
+	for ( $i = 0; $i < 10000; $i++ ) {
+		$test[$i] = md5( rand( 1, $i ) );
+	}
+	Browser()->memory( 'testing', true );
+
+Results in the console:
+
+![Results](http://screenshots.mzaweb.com/ifbE)
+
+
 Installation
 ------------
 

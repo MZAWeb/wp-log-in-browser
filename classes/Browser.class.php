@@ -5,10 +5,14 @@ if ( class_exists( "Browser" ) )
 
 class Browser implements iBrowser {
 
+	const AUTHOR  = 'MZAWeb';
+	const VERSION = '0.1';
+
 	private static $instance;
 	private $interfaces = array();
 	private $path;
 	private static $timers = array();
+	private static $memory = array();
 
 	public function __construct() {
 
@@ -96,7 +100,38 @@ class Browser implements iBrowser {
 			if ( $log )
 				$this->log( $total_time, $key );
 
+			unset( self::$timers[$key] );
+
 			return $total_time;
+		}
+	}
+
+
+	/**
+	 * @static
+	 *
+	 * @param string    $key
+	 * @param bool      $log
+	 *
+	 * @return bool|float
+	 *
+	 */
+	public function memory( $key, $log = false ) {
+		if ( !isset( self::$memory[$key] ) ) {
+			$memory             = memory_get_usage();
+			self::$memory[$key] = $memory;
+
+			return false;
+		} else {
+			$memory       = memory_get_usage();
+			$total_memory = $memory - self::$memory[$key];
+
+			if ( $log )
+				$this->log( $total_memory, $key );
+
+			unset( self::$memory[$key] );
+
+			return $total_memory;
 		}
 	}
 
