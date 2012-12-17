@@ -29,14 +29,14 @@ Also, commandas are chainable:
 
 For example, to log all your main query's query_vars:
 
-```add_filter( 'pre_get_posts', 'log_wp_query', 10000 );
+`add_filter( 'pre_get_posts', 'log_wp_query', 10000 );
 
 function log_wp_query( $query ) {
 	if ( $query->is_main_query() )
 		browser()->log( $query->query_vars, 'pre_get_posts' );
 
 	return $query;
-}```
+}`
 
 = Filters =
 
@@ -60,16 +60,16 @@ The second time you call this function with a given $key, it will return the ell
 
 Example 1: Sequential use, log manually.
 
-```browser()->timer( 'Mega loop' );
+`browser()->timer( 'Mega loop' );
 for ( $i = 0; $i < 1000000; $i++ ) {
 	//do something
 }
 $time = browser()->timer( 'Mega loop' );
-browser()->log( $time, 'The mega loop took:' );```
+browser()->log( $time, 'The mega loop took:' );`
 
 Example 2: Start and end in different places, log automatically.
 
-```add_action( 'posts_selection', 'start_timer', 100 );
+`add_action( 'posts_selection', 'start_timer', 100 );
 add_filter( 'the_posts', 'end_timer', 1, 2 );
 
 function start_timer( $query ) {
@@ -79,7 +79,7 @@ function start_timer( $query ) {
 function end_timer( $posts, $query ) {
 	browser()->timer( 'Main query time', true );
 	return $posts;
-}```
+}`
 
 *This is not a good way of measuring how much time a query takes to run, it's just to illustrate how to use the timer.*
 
@@ -91,7 +91,7 @@ to measure delta of memory consumption from your first call and your second call
 
 Example:
 
-```Browser()->memory( 'testing' );
+`Browser()->memory( 'testing' );
 $test = array();
 for ( $i = 0; $i < 100; $i++ ) {
 	$test[$i] = md5( rand( 1, $i ) );
@@ -104,7 +104,7 @@ $test = array();
 for ( $i = 0; $i < 10000; $i++ ) {
 	$test[$i] = md5( rand( 1, $i ) );
 }
-Browser()->memory( 'testing', true );```
+Browser()->memory( 'testing', true );`
 
 == Installation ==
 
