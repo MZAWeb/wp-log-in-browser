@@ -6,11 +6,12 @@ if ( class_exists( "Browser" ) )
 class Browser implements iBrowser {
 
 	const AUTHOR  = 'MZAWeb';
-	const VERSION = '0.1';
+	const VERSION = '0.1.2';
 
 	private static $instance;
-	private $interfaces = array();
 	private $path;
+
+	private $interfaces = array();
 	private static $timers = array();
 	private static $memory = array();
 
